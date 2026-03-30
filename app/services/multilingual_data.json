@@ -1,0 +1,107 @@
+{
+  "hi_to_en": {
+    "नमस्ते": "greeting",
+    "हैलो": "greeting",
+    "धन्यवाद": "thank_you",
+    "मदद चाहिए": "help_request",
+
+    "ड्राइवर कहाँ है": "track_ride",
+    "ड्राइवर नहीं आया": "driver_not_arrived",
+    "ड्राइवर लेट है": "driver_late",
+    "ड्राइवर से संपर्क नहीं हो रहा": "cannot_contact_driver",
+
+    "गलत पिकअप लोकेशन": "wrong_pickup_location",
+    "गलत ड्रॉप लोकेशन": "wrong_drop_location",
+
+    "राइड बिना मेरे शुरू हो गई": "ride_started_without_user",
+    "राइड शुरू नहीं हुई": "ride_not_started",
+
+    "राइड कैंसल करो": "cancel_ride",
+    "ड्राइवर ने राइड कैंसल की": "cancel_by_driver",
+    "कैंसलेशन चार्ज क्यों": "cancellation_fee_issue",
+
+    "पेमेंट में दिक्कत": "payment_issue",
+    "पेमेंट फेल हुआ": "payment_failed",
+    "डबल पेमेंट हो गया": "double_payment",
+    "गलत किराया लिया": "wrong_fare_charged",
+
+    "पेमेंट मेथड बदलना है": "payment_method_change",
+    "रिफंड चाहिए": "refund_request",
+    "रिफंड स्टेटस": "refund_status",
+    "रिफंड नहीं मिला": "refund_not_received",
+
+    "इनवॉइस चाहिए": "invoice_request",
+    "किराया विवरण": "fare_breakup",
+
+    "सुरक्षा समस्या": "safety_issue",
+    "ड्राइवर खराब व्यवहार": "driver_misbehavior",
+    "तेज़ ड्राइविंग": "rash_driving",
+    "एक्सीडेंट रिपोर्ट": "accident_report",
+
+    "सामान खो गया": "lost_item",
+    "इमरजेंसी": "emergency_sos",
+
+    "अकाउंट समस्या": "account_issue",
+    "लॉगिन समस्या": "login_problem",
+    "प्रोफाइल अपडेट": "update_profile",
+
+    "कूपन लगाओ": "apply_coupon",
+    "ऑफर लागू नहीं हुआ": "offer_not_applied",
+
+    "रूट समस्या": "route_issue",
+    "लंबा रूट लिया": "long_route_taken"
+  },
+
+  "mr_to_en": {
+    "नमस्कार": "greeting",
+    "हॅलो": "greeting",
+    "धन्यवाद": "thank_you",
+    "मदत हवी आहे": "help_request",
+
+    "ड्रायव्हर कुठे आहे": "track_ride",
+    "ड्रायव्हर आला नाही": "driver_not_arrived",
+    "ड्रायव्हर उशिरा आहे": "driver_late",
+    "ड्रायव्हरशी संपर्क होत नाही": "cannot_contact_driver",
+
+    "चुकीची पिकअप लोकेशन": "wrong_pickup_location",
+    "चुकीची ड्रॉप लोकेशन": "wrong_drop_location",
+
+    "राईड माझ्याशिवाय सुरू झाली": "ride_started_without_user",
+    "राईड सुरू झाली नाही": "ride_not_started",
+
+    "राईड रद्द करा": "cancel_ride",
+    "ड्रायव्हरने राईड रद्द केली": "cancel_by_driver",
+    "कॅन्सलेशन फी का": "cancellation_fee_issue",
+
+    "पेमेंट समस्या": "payment_issue",
+    "पेमेंट फेल झाले": "payment_failed",
+    "डबल पेमेंट झाले": "double_payment",
+    "चुकीचे भाडे घेतले": "wrong_fare_charged",
+
+    "पेमेंट पद्धत बदला": "payment_method_change",
+    "रिफंड हवा आहे": "refund_request",
+    "रिफंड स्टेटस": "refund_status",
+    "रिफंड मिळाला नाही": "refund_not_received",
+
+    "इनव्हॉइस हवा आहे": "invoice_request",
+    "भाडे तपशील": "fare_breakup",
+
+    "सुरक्षा समस्या": "safety_issue",
+    "ड्रायव्हरचे वाईट वर्तन": "driver_misbehavior",
+    "वेगाने ड्रायव्हिंग": "rash_driving",
+    "अपघात रिपोर्ट": "accident_report",
+
+    "सामान हरवले": "lost_item",
+    "इमर्जन्सी": "emergency_sos",
+
+    "अकाउंट समस्या": "account_issue",
+    "लॉगिन समस्या": "login_problem",
+    "प्रोफाइल अपडेट": "update_profile",
+
+    "कूपन लावा": "apply_coupon",
+    "ऑफर लागू झाले नाही": "offer_not_applied",
+
+    "रूट समस्या": "route_issue",
+    "लांब रूट घेतला": "long_route_taken"
+  }
+}
