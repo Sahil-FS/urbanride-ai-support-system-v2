@@ -1,0 +1,80 @@
+/* ── Input Bar ── */
+.input-bar {
+  border-top: 1px solid var(--border-faint);
+  background: var(--bg-panel);
+  padding: 12px 18px 8px;
+}
+.input-bar__shell {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 7px 7px 7px 12px;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.input-bar__shell:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.11);
+}
+
+.input-bar__icon-btn {
+  width: 34px; height: 34px;
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  transition: background var(--t), color var(--t);
+  flex-shrink: 0;
+}
+.input-bar__icon-btn:hover:not(:disabled) {
+  background: var(--bg-hover); color: var(--text-primary);
+}
+.input-bar__icon-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.input-bar__field {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+  min-height: 34px;
+  max-height: 110px;
+  padding: 5px 2px;
+  overflow-y: auto;
+}
+.input-bar__field::placeholder { color: var(--text-muted); }
+.input-bar__field:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Send button */
+.input-bar__send {
+  width: 36px; height: 36px;
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  transition: background var(--t), color var(--t), transform var(--t);
+  flex-shrink: 0;
+}
+.input-bar__send--active {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(37,99,235,0.38);
+}
+.input-bar__send--active:hover {
+  background: var(--blue-hover); transform: scale(1.06);
+}
+.input-bar__send:disabled:not(.input-bar__send--active) { cursor: not-allowed; }
+
+/* Hint */
+.input-bar__hint {
+  font-size: 10px; color: var(--text-muted);
+  text-align: center; margin-top: 6px;
+}
+.input-bar__hint kbd {
+  font-family: inherit;
+  background: var(--bg-input);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 1px 5px; font-size: 9.5px;
+}

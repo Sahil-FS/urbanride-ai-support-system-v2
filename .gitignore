@@ -1,0 +1,17 @@
+venv/
+.venv/
+__pycache__/
+.env
+.mypy_cache/
+.vscode/
+*.pyc
+tsc_output*.txt
+node_modules/
+dist/
+build/
+models/**/*.onnx
+models/**/*.pt
+models/**/*.pth
+models/**/*.bin
+models/**/*.joblib
+models/**/*.h5

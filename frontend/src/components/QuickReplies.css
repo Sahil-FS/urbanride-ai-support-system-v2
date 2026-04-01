@@ -1,0 +1,26 @@
+/* ── Quick Replies ── */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 20px 6px 60px; /* indent to align with bot bubble */
+  animation: fadeUp 0.25s ease forwards;
+}
+.quick-reply-btn {
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background var(--t), color var(--t), border-color var(--t), transform var(--t);
+  white-space: nowrap;
+}
+.quick-reply-btn:hover {
+  background: var(--bg-active);
+  color: var(--blue-hover);
+  border-color: rgba(37,99,235,0.4);
+  transform: translateY(-1px);
+}
+.quick-reply-btn:active { transform: translateY(0); }

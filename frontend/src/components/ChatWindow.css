@@ -1,0 +1,26 @@
+/* ── Chat Window ── */
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 0;
+  background: var(--bg-base);
+}
+
+.chat-window__date {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.chat-window__date span {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-faint);
+  border-radius: var(--r-pill);
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}

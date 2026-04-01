@@ -1,0 +1,78 @@
+/* =============================================
+   URBAN TAXI SUPPORT v2 — GLOBAL DESIGN SYSTEM
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  /* Backgrounds */
+  --bg-base:        #0d0f14;
+  --bg-sidebar:     #111318;
+  --bg-panel:       #161922;
+  --bg-input:       #1c2030;
+  --bg-hover:       rgba(255,255,255,0.045);
+  --bg-active:      rgba(37,99,235,0.14);
+
+  /* Bubble colors */
+  --bubble-bot:     #1a1e2a;
+  --bubble-user:    #2563eb;
+
+  /* Accent colors */
+  --green:          #22c55e;
+  --green-dim:      rgba(34,197,94,0.12);
+  --green-border:   rgba(34,197,94,0.25);
+  --blue:           #2563eb;
+  --blue-hover:     #3b82f6;
+  --red:            #ef4444;
+  --red-dim:        rgba(239,68,68,0.12);
+  --red-border:     rgba(239,68,68,0.25);
+
+  /* Text */
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #4b5568;
+  --text-hint:      #374151;
+
+  /* Borders */
+  --border-faint:   rgba(255,255,255,0.055);
+  --border-soft:    rgba(255,255,255,0.09);
+
+  /* Layout */
+  --sidebar-w:      242px;
+  --header-h:       64px;
+
+  /* Radii */
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  16px;
+  --r-xl:  22px;
+  --r-pill:99px;
+
+  /* Transitions */
+  --t: 0.16s ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; width: 100%; overflow: hidden; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea { font-family: inherit; outline: none; border: none; background: none; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 99px; }
+
+/* ── Utilities ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
