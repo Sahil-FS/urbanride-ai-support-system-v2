@@ -4,7 +4,8 @@ const API_BASE = 'http://localhost:8000';
 
 export async function sendChatMessage(
   message: string,
-  originalText?: string
+  originalText?: string,
+  language: string = 'en'
 ): Promise<ChatApiResponse> {
   const response = await fetch(`${API_BASE}/api/v1/chat`, {
     method: 'POST',
@@ -12,6 +13,7 @@ export async function sendChatMessage(
     body: JSON.stringify({
       message,
       original_text: originalText || message,
+      language,
     }),
   });
 

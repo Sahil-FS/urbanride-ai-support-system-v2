@@ -1,13 +1,14 @@
 import './QuickReplies.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
-export const QUICK_REPLIES = [
-  { id: 'track',   label: '🚕 Track Ride' },
-  { id: 'driver',  label: '👤 Driver Issue' },
-  { id: 'payment', label: '💳 Payment Issue' },
-  { id: 'cancel',  label: '❌ Cancel Ride' },
-  { id: 'refund',  label: '💰 Refund Request' },
-  { id: 'safety',  label: '🆘 Safety Concern' },
-  { id: 'support', label: '📞 Talk to Support' },
+const QUICK_REPLIES_KEYS = [
+  { id: 'track', key: 'quickReplies.trackRide' },
+  { id: 'driver', key: 'quickReplies.driverIssue' },
+  { id: 'payment', key: 'quickReplies.paymentIssue' },
+  { id: 'cancel', key: 'quickReplies.cancelRide' },
+  { id: 'refund', key: 'quickReplies.refundRequest' },
+  { id: 'safety', key: 'quickReplies.safetyConcern' },
+  { id: 'support', key: 'quickReplies.talkToSupport' },
 ];
 
 interface QuickRepliesProps {
@@ -15,15 +16,17 @@ interface QuickRepliesProps {
 }
 
 export function QuickReplies({ onSelect }: QuickRepliesProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="quick-replies">
-      {QUICK_REPLIES.map((item) => (
+      {QUICK_REPLIES_KEYS.map((item) => (
         <button
           key={item.id}
           className="quick-reply-btn"
-          onClick={() => onSelect(item.label)}
+          onClick={() => onSelect(t(item.key))}
         >
-          {item.label}
+          {t(item.key)}
         </button>
       ))}
     </div>

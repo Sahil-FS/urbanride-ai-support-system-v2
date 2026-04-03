@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Message } from '../types';
 import './MessageBubble.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface MessageBubbleProps {
   message: Message;
@@ -23,6 +24,7 @@ export function MessageBubble({
   onCallClick,
   onResolved,
 }: MessageBubbleProps) {
+  const { t } = useLanguage();
   const isUser = message.role === 'user';
 
   const [optionsUsed, setOptionsUsed] = useState(false);
@@ -44,7 +46,7 @@ export function MessageBubble({
     if (isMobile) {
       window.location.href = 'tel:+919271035646';
     } else {
-      alert('Call us at: +91 92710 35646\n\nAvailable 24/7');
+      alert(`Call us at: +91 92710 35646\n\nAvailable 24/7`);
     }
   };
 
@@ -65,7 +67,7 @@ export function MessageBubble({
             triggerCall();
           }}
         >
-          Call Customer Support
+          {t('messageBubble.callSupport')}
         </button>
       </div>
     );
@@ -88,7 +90,7 @@ export function MessageBubble({
             triggerCall();
           }}
         >
-          Call Customer Support
+          {t('messageBubble.callSupport')}
         </button>
       </div>
     );
@@ -116,7 +118,7 @@ export function MessageBubble({
       )}
 
       <div className="bubble-content">
-        {!isUser && <span className="bubble-sender">Urban Taxi Support</span>}
+        {!isUser && <span className="bubble-sender">{t('header.title')}</span>}
 
         <div className={`bubble ${isUser ? 'bubble--user' : 'bubble--bot'}`}>
           <p className="bubble-text">{message.text}</p>
@@ -154,13 +156,13 @@ export function MessageBubble({
                 onResolved?.();
               }}
             >
-              Yes, resolved
+              {t('messageBubble.yes')}
             </button>
             <button
               className="satisfy-no"
               onClick={() => setSatisfactionState('needsHelp')}
             >
-              No, still need help
+              {t('messageBubble.no')}
             </button>
           </div>
         )}

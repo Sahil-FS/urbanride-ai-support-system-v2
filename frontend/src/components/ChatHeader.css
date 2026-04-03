@@ -69,3 +69,71 @@
   0%, 85%, 100% { opacity: 1; }
   42% { opacity: 0.35; }
 }
+
+/* Language Selector */
+.chat-header__language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.chat-header__language-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-faint);
+  cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t);
+}
+
+.chat-header__language-btn:hover {
+  background: var(--bg-hover);
+  color: var(--blue);
+  border-color: var(--border-soft);
+}
+
+.chat-header__language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 100px;
+  overflow: hidden;
+}
+
+.chat-header__language-option {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--t), color var(--t);
+}
+
+.chat-header__language-option:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.chat-header__language-option.active {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue);
+  font-weight: 600;
+}

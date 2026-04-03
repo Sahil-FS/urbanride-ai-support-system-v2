@@ -416,6 +416,14 @@ INTENT_RESPONSES: dict[str, list[str]] = {
 # This maps pill text directly to a specific intent
 # so sub-option clicks NEVER loop back to the parent question
 PILL_INTENT_MAP: dict[str, str] = {
+    # Top-level quick replies
+    "track ride":            "track_ride",
+    "driver issue":          "track_ride",
+    "payment issue":         "payment_issue",
+    "cancel ride":           "cancel_ride",
+    "refund request":        "refund_request",
+    "safety concern":        "safety_issue",
+
     # Cancel pills
     "cancel my current ride":  "cancel_ride_now",
     "cancel ride for free":    "cancel_ride_free",
@@ -510,15 +518,21 @@ def get_response(intent: str, confidence: float, original_text: str = "") -> dic
       5. Category 2         → direct response only
     """
 
+    logger.info(f"[TREE] Starting decision tree: intent={intent!r}, conf={confidence:.4f}, original_text={original_text!r}")
+
     # Branch 0 — pill label override (prevents ALL looping)
+    is_pill_override = False
     pill_key = original_text.lower().strip()
     if pill_key in PILL_INTENT_MAP:
         overridden_intent = PILL_INTENT_MAP[pill_key]
         if overridden_intent in INTENT_RESPONSES:
+            logger.info(f"[TREE]   Branch 0: PILL OVERRIDE {pill_key!r} -> {overridden_intent!r}")
             intent = overridden_intent
+            is_pill_override = True
 
     # Branch 1 — low confidence
-    if confidence < settings.CONFIDENCE_THRESHOLD:
+    if (not is_pill_override) and confidence < settings.CONFIDENCE_THRESHOLD:
+        logger.info(f"[TREE]   Branch 1: LOW CONFIDENCE ({confidence:.4f} < {settings.CONFIDENCE_THRESHOLD})")
         return {
             "resolved_intent": "fallback",
             "response": next(_iterators["fallback"]),
@@ -528,6 +542,7 @@ def get_response(intent: str, confidence: float, original_text: str = "") -> dic
 
     # Branch 2 — intent not in catalogue
     if intent not in INTENT_RESPONSES:
+        logger.info(f"[TREE]   Branch 2: UNKNOWN INTENT {intent!r}")
         return {
             "resolved_intent": "unknown_intent",
             "response": next(_iterators["unknown_intent"]),
@@ -537,6 +552,7 @@ def get_response(intent: str, confidence: float, original_text: str = "") -> dic
 
     # Branch 3 — Category 3 (emergency/serious — call button immediately)
     if intent in ALWAYS_SHOW_CALL:
+        logger.info(f"[TREE]   Branch 3: CATEGORY 3 (ALWAYS_SHOW_CALL) {intent!r}")
         return {
             "resolved_intent": intent,
             "response": next(_iterators[intent]),
@@ -546,6 +562,7 @@ def get_response(intent: str, confidence: float, original_text: str = "") -> dic
 
     # Branch 4 — Category 1 (broad — show sub-options)
     if intent in INTENT_SUB_OPTIONS:
+        logger.info(f"[TREE]   Branch 4: CATEGORY 1 (SUB_OPTIONS) {intent!r}")
         return {
             "resolved_intent": intent,
             "response": next(_iterators[intent]),
@@ -554,6 +571,7 @@ def get_response(intent: str, confidence: float, original_text: str = "") -> dic
         }
 
     # Branch 5 — Category 2 (specific — direct response, no sub-options)
+    logger.info(f"[TREE]   Branch 5: CATEGORY 2 (DIRECT) {intent!r}")
     return {
         "resolved_intent": intent,
         "response": next(_iterators[intent]),

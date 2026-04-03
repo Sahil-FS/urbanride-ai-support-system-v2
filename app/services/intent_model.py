@@ -1,6 +1,6 @@
 """
-intent_model.py — Local Intent Classification using DistilBERT
-Loads and uses the intent model from models/intent folder
+intent_model.py — Local intent classification using XLM-R style multilingual models.
+Loads model artifacts from models/intent.
 """
 
 import logging

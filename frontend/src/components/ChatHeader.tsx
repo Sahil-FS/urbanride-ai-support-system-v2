@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import './ChatHeader.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ChatHeaderProps {
   onClearChat: () => void;
 }
 
 export function ChatHeader({ onClearChat }: ChatHeaderProps) {
+  const { language, setLanguage, t } = useLanguage();
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+
+  const handleLanguageChange = (lang: 'en' | 'mr') => {
+    setLanguage(lang);
+    setShowLanguageDropdown(false);
+  };
+
   return (
     <header className="chat-header">
       {/* Left: bot info */}
@@ -19,29 +29,58 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
         </div>
         <div className="chat-header__bot-info">
           <div className="chat-header__name-row">
-            <h1 className="chat-header__name">Urban Taxi Support</h1>
+            <h1 className="chat-header__name">{t('header.title')}</h1>
             <span className="chat-header__online-dot" />
           </div>
-          <p className="chat-header__subtitle">Online · Typically replies instantly</p>
+          <p className="chat-header__subtitle">{t('header.subtitle')}</p>
         </div>
       </div>
 
       {/* Center label */}
       <div className="chat-header__center">
-        <span className="chat-header__center-label">AI SUPPORT CHAT</span>
+        <span className="chat-header__center-label">{t('header.aiLabel')}</span>
       </div>
 
       {/* Right: badge + actions */}
       <div className="chat-header__right">
         <span className="chat-header__badge">
           <span className="chat-header__badge-dot" />
-          AI-POWERED
+          {t('header.badge')}
         </span>
+
+        {/* Language Selector */}
+        <div className="chat-header__language-selector">
+          <button
+            className="chat-header__language-btn"
+            aria-label="Change language"
+            onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+            title="Select language"
+          >
+            🌐 {language.toUpperCase()}
+          </button>
+          {showLanguageDropdown && (
+            <div className="chat-header__language-dropdown">
+              <button
+                className={`chat-header__language-option ${language === 'en' ? 'active' : ''}`}
+                onClick={() => handleLanguageChange('en')}
+              >
+                English
+              </button>
+              <button
+                className={`chat-header__language-option ${language === 'mr' ? 'active' : ''}`}
+                onClick={() => handleLanguageChange('mr')}
+              >
+                मराठी
+              </button>
+            </div>
+          )}
+        </div>
+
         <button
           className="chat-header__action"
-          aria-label="Clear chat"
+          aria-label={t('header.clearBtn')}
           onClick={onClearChat}
-          title="Clear conversation"
+          title={t('header.clearBtn')}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="17" height="17">
             <polyline points="3 6 5 6 21 6"/>

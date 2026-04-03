@@ -11,7 +11,7 @@ SERVICES = [
     {
         "name": "Urban Ride AI Chatbot Service (port 8000)",
         "cmd": [sys.executable, "-m", "uvicorn", "main:app",
-                "--port", "8000", "--reload"],
+                "--port", "8000", "--reload", "--log-level", "debug"],
         "cwd": BASE_DIR,
     },
 ]

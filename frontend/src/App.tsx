@@ -6,17 +6,7 @@ import { ChatWindow } from './components/ChatWindow';
 import { InputBar } from './components/InputBar';
 import type { Message, BackendStatus } from './types';
 import { sendChatMessage } from './services/api';
-
-const WELCOME: Message = {
-  id: 'welcome',
-  role: 'bot',
-  text: "Hello! 👋 I'm your Urban Taxi Support assistant. How can I help you today? You can ask me about your rides, billing, driver issues, or anything else related to your trip.",
-  timestamp: new Date(),
-};
-
-function uid() {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
-}
+import { useLanguage } from './contexts/LanguageContext';
 
 const INTENT_SHORTCUTS: Record<string, string> = {
   "sos emergency": "sos help emergency danger now",
@@ -57,8 +47,14 @@ const INTENT_SHORTCUTS: Record<string, string> = {
 };
 
 export default function App() {
+  const { language, t } = useLanguage();
   const [activeNav, setActiveNav] = useState('chat');
-  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [messages, setMessages] = useState<Message[]>([{
+    id: 'welcome',
+    role: 'bot',
+    text: t('welcome'),
+    timestamp: new Date(),
+  }]);
   const [isLoading, setIsLoading] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
   const [backendStatus, setBackendStatus] = useState<BackendStatus>('unknown');
@@ -72,14 +68,15 @@ export default function App() {
   // Generates ticket message when call button is clicked
   const handleCallClick = useCallback(() => {
     const ticket = 'URB-' + Math.floor(1000 + Math.random() * 9000);
+    const ticketMessage = t('ticketSaved').replace('{ticketId}', ticket);
     setMessages(prev => [...prev, {
-      id: uid(),
+      id: (Date.now() + Math.random()).toString(),
       role: 'bot',
-      text: `Your complaint has been registered.\nTicket ID: ${ticket}\nOur team will assist you shortly.`,
+      text: ticketMessage,
       timestamp: new Date(),
       isEscalation: true,
     }]);
-  }, []);
+  }, [t]);
 
   // Called when customer clicks "Yes, resolved"
   const handleResolved = useCallback(() => {
@@ -95,7 +92,7 @@ export default function App() {
     setShowQuickReplies(false);
 
     const userMsg: Message = {
-      id: uid(),
+      id: (Date.now() + Math.random()).toString(),
       role: 'user',
       text,
       timestamp: new Date(),
@@ -106,7 +103,7 @@ export default function App() {
       const originalText = text;
       const messageToSend = INTENT_SHORTCUTS[text.toLowerCase()] || text;
 
-      const data = await sendChatMessage(messageToSend, originalText);
+      const data = await sendChatMessage(messageToSend, originalText, language);
       setBackendStatus('connected');
 
       const apiShowCall = data.showCallButton || (data as any).show_call_button || false;
@@ -114,7 +111,7 @@ export default function App() {
       if (shouldShowCall) callButtonShownRef.current = true;
 
       const botMessage: Message = {
-        id: uid(),
+        id: (Date.now() + Math.random()).toString(),
         role: 'bot',
         text: data.response,
         timestamp: new Date(),
@@ -125,19 +122,6 @@ export default function App() {
       setMessages(msgs => [...msgs, botMessage]);
 
       // ── Escalation counter logic ───────────────────────────────────────────
-      // Rule 1: Final answer (no pills, no call button from API)
-      //         → customer got a resolution → reset counter to 0
-      //         → "Was this helpful?" will appear in MessageBubble
-      //         → if customer clicks "No still need help" → call button
-      //            appears directly in that bubble (handled in MessageBubble)
-      //
-      // Rule 2: Bot gave pills or call button (still in flow)
-      //         → increment counter
-      //         → after 3 back-and-forth → auto escalation fires ONCE
-      //
-      // Rule 3: Auto escalation already fired or user resolved
-      //         → never fire again
-
       const hasPills = (botMessage.subOptions?.length ?? 0) > 0;
       const isFinalAnswer = !hasPills && !shouldShowCall;
 
@@ -163,7 +147,7 @@ export default function App() {
             setMessages(msgs => [...msgs, {
               id: Date.now().toString(),
               role: 'bot',
-              text: 'I notice we have been going back and forth. Would you like to speak directly with a live support agent?',
+              text: t('escalationMessage'),
               timestamp: new Date(),
               subOptions: [],
               showCallButton: showEscCallBtn,
@@ -180,19 +164,24 @@ export default function App() {
     } catch {
       setBackendStatus('offline');
       setMessages(prev => [...prev, {
-        id: uid(),
+        id: (Date.now() + Math.random()).toString(),
         role: 'bot',
-        text: 'Sorry, something went wrong. Please try again.',
+        text: t('errorMessage'),
         timestamp: new Date(),
       }]);
     } finally {
       isLoadingRef.current = false;
       setIsLoading(false);
     }
-  }, [isResolved]);
+  }, [language, isResolved, t]);
 
   const handleClearChat = useCallback(() => {
-    setMessages([WELCOME]);
+    setMessages([{
+      id: 'welcome',
+      role: 'bot',
+      text: t('welcome'),
+      timestamp: new Date(),
+    }]);
     setShowQuickReplies(true);
     setBackendStatus('unknown');
     botMessageCountRef.current = 0;
@@ -201,7 +190,7 @@ export default function App() {
     hasEscalatedRef.current = false;
     callButtonShownRef.current = false;
     isLoadingRef.current = false;
-  }, []);
+  }, [t]);
 
   return (
     <div className="app">

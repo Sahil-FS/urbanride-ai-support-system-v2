@@ -4,7 +4,7 @@ AI-powered customer support system for a taxi platform with:
 
 - FastAPI backend
 - React + Vite frontend
-- Mock NLP and intent services for local development
+- Local multilingual intent model (XLM-R) running in-process
 
 ## Project layout
 
@@ -12,10 +12,9 @@ AI-powered customer support system for a taxi platform with:
 urbanride-ai-support-system/
 	app/                  # Backend application code
 	frontend/             # React frontend
-	mocks/                # Mock NLP + intent APIs
 	models/               # Local model artifact storage
-		intent/             # Intent models
-		nlp/                # NLP/translation models
+		intent/             # XLM-R intent model artifacts
+		nlp/                # Optional future NLP artifacts
 		shared/             # Shared assets (tokenizers, labels, etc.)
 ```
 
@@ -42,13 +41,11 @@ npm install
 Set-Location ..
 ```
 
-## Start backend services
+## Start backend service
 
-This starts:
+This starts a single backend service:
 
 - Main chatbot API on `8000`
-- Mock intent API on `8001`
-- Mock NLP API on `8002`
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -80,6 +77,23 @@ $body = @{ message = 'Driver Not Arrived'; original_text = 'Driver Not Arrived' 
 Invoke-RestMethod -Uri 'http://localhost:8000/api/v1/chat' -Method Post -ContentType 'application/json' -Body $body
 ```
 
+```powershell
+$body = @{ message = 'पेमेंट समस्या'; original_text = 'पेमेंट समस्या'; language = 'mr' } | ConvertTo-Json
+Invoke-RestMethod -Uri 'http://localhost:8000/api/v1/chat' -Method Post -ContentType 'application/json' -Body $body
+```
+
+## Runtime architecture
+
+Current backend pipeline is local and self-contained:
+
+- Raw user input (English or Marathi)
+- Input normalization (quick-reply canonicalization)
+- Intent inference using local XLM-R model from `models/intent/`
+- Decision tree response generation with sub-option flow
+- Final response localization based on requested language
+
+No external NLP API calls are required.
+
 ## Where to store models
 
 Store model files in:
@@ -90,9 +104,9 @@ Store model files in:
 
 Suggested examples:
 
-- `models/intent/model.joblib`
-- `models/intent/labels.json`
-- `models/nlp/translator.onnx`
+- `models/intent/model.safetensors`
+- `models/intent/config.json`
+- `models/intent/tokenizer.json`
 - `models/shared/tokenizer.json`
 
 By default, large model binaries are ignored in `.gitignore`.

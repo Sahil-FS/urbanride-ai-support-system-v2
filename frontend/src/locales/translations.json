@@ -1,0 +1,84 @@
+{
+  "en": {
+    "header": {
+      "title": "Urban Taxi Support",
+      "subtitle": "Online · Typically replies instantly",
+      "aiLabel": "AI SUPPORT CHAT",
+      "badge": "AI-POWERED",
+      "clearBtn": "Clear chat"
+    },
+    "sidebar": {
+      "navChat": "Chat",
+      "navHelp": "Help Center",
+      "navComplaints": "Complaints",
+      "navSettings": "Settings"
+    },
+    "inputBar": {
+      "placeholder": "Type a message...",
+      "hintEnter": "Press Enter to send",
+      "hintShift": "Shift+Enter for new line",
+      "uploadImage": "Upload image",
+      "voiceMessage": "Voice message"
+    },
+    "quickReplies": {
+      "trackRide": "🚕 Track Ride",
+      "driverIssue": "👤 Driver Issue",
+      "paymentIssue": "💳 Payment Issue",
+      "cancelRide": "❌ Cancel Ride",
+      "refundRequest": "💰 Refund Request",
+      "safetyConcern": "🆘 Safety Concern",
+      "talkToSupport": "📞 Talk to Support"
+    },
+    "messageBubble": {
+      "callSupport": "Call Customer Support",
+      "yes": "Yes, resolved",
+      "no": "No, still need help",
+      "timeLabel": "Today"
+    },
+    "welcome": "Hello! 👋 I'm your Urban Taxi Support assistant. How can I help you today? You can ask me about your rides, billing, driver issues, or anything else related to your trip.",
+    "errorMessage": "Sorry, something went wrong. Please try again.",
+    "ticketSaved": "Your complaint has been registered.\nTicket ID: {ticketId}\nOur team will assist you shortly.",
+    "escalationMessage": "I notice we have been going back and forth. Would you like to speak directly with a live support agent?"
+  },
+  "mr": {
+    "header": {
+      "title": "अर्बन टॅक्सी सपोर्ट",
+      "subtitle": "ऑनलाइन · सामान्यत: तात्काळ प्रतिक्रिया",
+      "aiLabel": "एआय सपोर्ट चॅट",
+      "badge": "एआय-सक्षम",
+      "clearBtn": "चॅट साफ करा"
+    },
+    "sidebar": {
+      "navChat": "चॅट",
+      "navHelp": "मदत केंद्र",
+      "navComplaints": "तक्रारी",
+      "navSettings": "सेटिंग्ज"
+    },
+    "inputBar": {
+      "placeholder": "संदेश टाइप करा...",
+      "hintEnter": "पाठवण्यासाठी Enter दाबा",
+      "hintShift": "नवीन ओळीसाठी Shift+Enter",
+      "uploadImage": "चित्र अपलोड करा",
+      "voiceMessage": "व्हॉईस संदेश"
+    },
+    "quickReplies": {
+      "trackRide": "🚕 राइड ट्रॅक करा",
+      "driverIssue": "👤 ड्राइव्हर समस्या",
+      "paymentIssue": "💳 पेमेंट समस्या",
+      "cancelRide": "❌ राइड रद्द करा",
+      "refundRequest": "💰 रिफंड विनंती",
+      "safetyConcern": "🆘 सुरक्षा चिंता",
+      "talkToSupport": "📞 सपोर्टसह बोला"
+    },
+    "messageBubble": {
+      "callSupport": "ग्राहक सपोर्टला कॉल करा",
+      "yes": "होय, हल झाले",
+      "no": "नाही, अजूनही मदत हवी आहे",
+      "timeLabel": "आज"
+    },
+    "welcome": "नमस्ते! 👋 मी तुमचा अर्बन टॅक्सी सपोर्ट सहायक आहे. आज मी तुम्हाला कसे मदत करू शकतो? तुम्ही तुमच्या राइड, बिलिंग, ड्राइव्हर समस्या किंवा तुमच्या यात्रेशी संबंधित कोणत्याही गोष्टीबद्दल विचारू शकता.",
+    "errorMessage": "स्तंभ, काहीतरी चुकीचे झाले. पुन्हा प्रयत्न करा.",
+    "ticketSaved": "आपली तक्रार नोंदविली गेली.\nटिकिट आयडी: {ticketId}\nआमचा दल लवकरात लवकर आपली मदत करेल.",
+    "escalationMessage": "मला असे दिसते की आम्ही यावेळी मागे आणि पुढे जात आहोत. आप्पण थेट एका लाईव्ह सपोर्ट एजंटशी बोलू इच्छिता?"
+  }
+}
