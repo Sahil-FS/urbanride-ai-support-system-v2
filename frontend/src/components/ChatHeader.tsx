@@ -10,7 +10,7 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
   const { language, setLanguage, t } = useLanguage();
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
 
-  const handleLanguageChange = (lang: 'en' | 'mr') => {
+  const handleLanguageChange = (lang: 'en' | 'mr' | 'hi') => {
     setLanguage(lang);
     setShowLanguageDropdown(false);
   };
@@ -71,6 +71,12 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
                 onClick={() => handleLanguageChange('mr')}
               >
                 मराठी
+              </button>
+              <button
+                className={`chat-header__language-option ${language === 'hi' ? 'active' : ''}`}
+                onClick={() => handleLanguageChange('hi')}
+              >
+                हिन्दी
               </button>
             </div>
           )}

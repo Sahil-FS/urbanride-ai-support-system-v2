@@ -31,9 +31,9 @@ export function Sidebar({ activeNav, onNavChange, backendStatus }: SidebarProps)
   ];
 
   const statusLabel =
-    backendStatus === 'connected' ? 'Backend Connected' :
-    backendStatus === 'offline'   ? 'Backend Offline' :
-    'Checking...';
+    backendStatus === 'connected' ? t('sidebar.statusConnected') :
+    backendStatus === 'offline'   ? t('sidebar.statusOffline') :
+    t('sidebar.statusChecking');
 
   return (
     <aside className="sidebar">
@@ -51,7 +51,7 @@ export function Sidebar({ activeNav, onNavChange, backendStatus }: SidebarProps)
       </div>
 
       {/* Menu label */}
-      <p className="sidebar-section-label">MAIN MENU</p>
+      <p className="sidebar-section-label">{t('sidebar.mainMenu')}</p>
 
       {/* Nav */}
       <nav className="sidebar-nav">

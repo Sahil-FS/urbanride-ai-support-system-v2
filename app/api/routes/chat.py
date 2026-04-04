@@ -17,7 +17,8 @@ router = APIRouter()
 async def chat(request: ChatRequest) -> ChatResponse:
     raw_message   = request.message.strip()
     original_text = (request.original_text or raw_message).strip()
-    language      = request.language or "en"
+    requested_language = (request.language or "en").lower()
+    language = requested_language if requested_language in {"en", "mr", "hi"} else "en"
     normalized_raw_message = normalize_user_message(raw_message)
     normalized_original_text = normalize_user_message(original_text)
 

@@ -5,7 +5,7 @@ from typing import List
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=1000)
     original_text: str = ""
-    language: str = Field(default="en", description="Language code: 'en' or 'mr'")
+    language: str = Field(default="en", description="Language code: 'en', 'mr', or 'hi'")
 
 
 class ChatResponse(BaseModel):

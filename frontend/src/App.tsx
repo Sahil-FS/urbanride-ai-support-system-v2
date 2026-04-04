@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import './App.css';
 import { Sidebar } from './components/Sidebar';
 import { ChatHeader } from './components/ChatHeader';
@@ -64,6 +64,16 @@ export default function App() {
   const callButtonShownRef = useRef(false);
   const isLoadingRef = useRef(false);
   const botMessageCountRef = useRef(0);
+
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.map((message) =>
+        message.id === 'welcome'
+          ? { ...message, text: t('welcome') }
+          : message,
+      ),
+    );
+  }, [language, t]);
 
   // Generates ticket message when call button is clicked
   const handleCallClick = useCallback(() => {

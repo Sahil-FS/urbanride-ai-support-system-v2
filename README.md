@@ -5,6 +5,7 @@ AI-powered customer support system for a taxi platform with:
 - FastAPI backend
 - React + Vite frontend
 - Local multilingual intent model (XLM-R) running in-process
+- English, Marathi, and Hindi conversation support
 
 ## Project layout
 
@@ -79,6 +80,11 @@ Invoke-RestMethod -Uri 'http://localhost:8000/api/v1/chat' -Method Post -Content
 
 ```powershell
 $body = @{ message = 'पेमेंट समस्या'; original_text = 'पेमेंट समस्या'; language = 'mr' } | ConvertTo-Json
+Invoke-RestMethod -Uri 'http://localhost:8000/api/v1/chat' -Method Post -ContentType 'application/json' -Body $body
+```
+
+```powershell
+$body = @{ message = 'भुगतान समस्या'; original_text = 'भुगतान समस्या'; language = 'hi' } | ConvertTo-Json
 Invoke-RestMethod -Uri 'http://localhost:8000/api/v1/chat' -Method Post -ContentType 'application/json' -Body $body
 ```
 

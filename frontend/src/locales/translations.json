@@ -8,10 +8,14 @@
       "clearBtn": "Clear chat"
     },
     "sidebar": {
+      "mainMenu": "MAIN MENU",
       "navChat": "Chat",
       "navHelp": "Help Center",
       "navComplaints": "Complaints",
-      "navSettings": "Settings"
+      "navSettings": "Settings",
+      "statusConnected": "Backend Connected",
+      "statusOffline": "Backend Offline",
+      "statusChecking": "Checking..."
     },
     "inputBar": {
       "placeholder": "Type a message...",
@@ -33,7 +37,13 @@
       "callSupport": "Call Customer Support",
       "yes": "Yes, resolved",
       "no": "No, still need help",
-      "timeLabel": "Today"
+      "timeLabel": "Today",
+      "connecting": "Connecting you to support...",
+      "wasThisHelpful": "Was this helpful?",
+      "gladWeCouldHelp": "Glad we could help!"
+    },
+    "chatWindow": {
+      "today": "Today"
     },
     "welcome": "Hello! 👋 I'm your Urban Taxi Support assistant. How can I help you today? You can ask me about your rides, billing, driver issues, or anything else related to your trip.",
     "errorMessage": "Sorry, something went wrong. Please try again.",
@@ -49,10 +59,14 @@
       "clearBtn": "चॅट साफ करा"
     },
     "sidebar": {
+      "mainMenu": "मुख्य मेनू",
       "navChat": "चॅट",
       "navHelp": "मदत केंद्र",
       "navComplaints": "तक्रारी",
-      "navSettings": "सेटिंग्ज"
+      "navSettings": "सेटिंग्ज",
+      "statusConnected": "बॅकएंड कनेक्टेड",
+      "statusOffline": "बॅकएंड ऑफलाइन",
+      "statusChecking": "तपासणी सुरू आहे..."
     },
     "inputBar": {
       "placeholder": "संदेश टाइप करा...",
@@ -74,11 +88,68 @@
       "callSupport": "ग्राहक सपोर्टला कॉल करा",
       "yes": "होय, हल झाले",
       "no": "नाही, अजूनही मदत हवी आहे",
-      "timeLabel": "आज"
+      "timeLabel": "आज",
+      "connecting": "तुम्हाला सपोर्टशी जोडले जात आहे...",
+      "wasThisHelpful": "हे उपयुक्त होते का?",
+      "gladWeCouldHelp": "मदत करून आनंद झाला!"
+    },
+    "chatWindow": {
+      "today": "आज"
     },
     "welcome": "नमस्ते! 👋 मी तुमचा अर्बन टॅक्सी सपोर्ट सहायक आहे. आज मी तुम्हाला कसे मदत करू शकतो? तुम्ही तुमच्या राइड, बिलिंग, ड्राइव्हर समस्या किंवा तुमच्या यात्रेशी संबंधित कोणत्याही गोष्टीबद्दल विचारू शकता.",
     "errorMessage": "स्तंभ, काहीतरी चुकीचे झाले. पुन्हा प्रयत्न करा.",
     "ticketSaved": "आपली तक्रार नोंदविली गेली.\nटिकिट आयडी: {ticketId}\nआमचा दल लवकरात लवकर आपली मदत करेल.",
     "escalationMessage": "मला असे दिसते की आम्ही यावेळी मागे आणि पुढे जात आहोत. आप्पण थेट एका लाईव्ह सपोर्ट एजंटशी बोलू इच्छिता?"
+  },
+  "hi": {
+    "header": {
+      "title": "अर्बन टैक्सी सपोर्ट",
+      "subtitle": "ऑनलाइन · आमतौर पर तुरंत जवाब",
+      "aiLabel": "एआई सपोर्ट चैट",
+      "badge": "एआई-संचालित",
+      "clearBtn": "चैट साफ़ करें"
+    },
+    "sidebar": {
+      "mainMenu": "मुख्य मेनू",
+      "navChat": "चैट",
+      "navHelp": "सहायता केंद्र",
+      "navComplaints": "शिकायतें",
+      "navSettings": "सेटिंग्स",
+      "statusConnected": "बैकएंड कनेक्टेड",
+      "statusOffline": "बैकएंड ऑफ़लाइन",
+      "statusChecking": "जांच की जा रही है..."
+    },
+    "inputBar": {
+      "placeholder": "संदेश लिखें...",
+      "hintEnter": "सेंड करने के लिए Enter दबाएँ",
+      "hintShift": "नई लाइन के लिए Shift+Enter",
+      "uploadImage": "छवि अपलोड करें",
+      "voiceMessage": "वॉइस संदेश"
+    },
+    "quickReplies": {
+      "trackRide": "🚕 राइड ट्रैक करें",
+      "driverIssue": "👤 ड्राइवर समस्या",
+      "paymentIssue": "💳 भुगतान समस्या",
+      "cancelRide": "❌ राइड रद्द करें",
+      "refundRequest": "💰 रिफंड अनुरोध",
+      "safetyConcern": "🆘 सुरक्षा चिंता",
+      "talkToSupport": "📞 सपोर्ट से बात करें"
+    },
+    "messageBubble": {
+      "callSupport": "कस्टमर सपोर्ट को कॉल करें",
+      "yes": "हाँ, हल हो गया",
+      "no": "नहीं, अभी भी मदद चाहिए",
+      "timeLabel": "आज",
+      "connecting": "आपको सपोर्ट से जोड़ा जा रहा है...",
+      "wasThisHelpful": "क्या यह मददगार था?",
+      "gladWeCouldHelp": "मदद करके खुशी हुई!"
+    },
+    "chatWindow": {
+      "today": "आज"
+    },
+    "welcome": "नमस्ते! 👋 मैं आपका अर्बन टैक्सी सपोर्ट सहायक हूँ। आज मैं आपकी कैसे मदद कर सकता हूँ? आप अपनी राइड, बिलिंग, ड्राइवर समस्याओं या यात्रा से जुड़ी किसी भी बात के बारे में पूछ सकते हैं।",
+    "errorMessage": "क्षमा करें, कुछ गलत हो गया। कृपया फिर कोशिश करें।",
+    "ticketSaved": "आपकी शिकायत दर्ज कर ली गई है।\nटिकट आईडी: {ticketId}\nहमारी टीम जल्द ही आपकी सहायता करेगी।",
+    "escalationMessage": "ऐसा लग रहा है कि हम एक ही बात पर बार-बार लौट रहे हैं। क्या आप सीधे किसी लाइव सपोर्ट एजेंट से बात करना चाहेंगे?"
   }
 }

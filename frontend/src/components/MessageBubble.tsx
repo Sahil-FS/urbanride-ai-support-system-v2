@@ -54,7 +54,7 @@ export function MessageBubble({
     if (callDone) {
       return (
         <div className="call-section">
-          <p className="resolved-text">Connecting you to support...</p>
+          <p className="resolved-text">{t('messageBubble.connecting')}</p>
         </div>
       );
     }
@@ -77,7 +77,7 @@ export function MessageBubble({
     if (needsHelpCallDone) {
       return (
         <div className="call-section">
-          <p className="resolved-text">Connecting you to support...</p>
+          <p className="resolved-text">{t('messageBubble.connecting')}</p>
         </div>
       );
     }
@@ -148,7 +148,7 @@ export function MessageBubble({
 
         {isFinalAnswer && satisfactionState === 'idle' && (
           <div className="satisfaction-check">
-            <span>Was this helpful?</span>
+            <span>{t('messageBubble.wasThisHelpful')}</span>
             <button
               className="satisfy-yes"
               onClick={() => {
@@ -168,7 +168,7 @@ export function MessageBubble({
         )}
 
         {isFinalAnswer && satisfactionState === 'resolved' && (
-          <p className="resolved-text">Glad we could help!</p>
+          <p className="resolved-text">{t('messageBubble.gladWeCouldHelp')}</p>
         )}
 
         {isFinalAnswer &&

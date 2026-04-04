@@ -1,7 +1,11 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import translations from '../locales/translations.json';
 
-type Language = 'en' | 'mr';
+type Language = 'en' | 'mr' | 'hi';
+
+function isLanguage(value: string | null): value is Language {
+  return value === 'en' || value === 'mr' || value === 'hi';
+}
 
 interface LanguageContextType {
   language: Language;
@@ -13,9 +17,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
-    // Try to get language from localStorage, default to 'en'
     const saved = localStorage.getItem('language');
-    return (saved as Language) || 'en';
+    return isLanguage(saved) ? saved : 'en';
   });
 
   const setLanguage = (lang: Language) => {

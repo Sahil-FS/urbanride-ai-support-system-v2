@@ -83,7 +83,9 @@ export function InputBar({ onSend, disabled }: InputBarProps) {
           </svg>
         </button>
       </div>
-      <p className="input-bar__hint">Press <kbd>Enter</kbd> {t('inputBar.hintEnter').split('Enter')[0]} · <kbd>Shift+Enter</kbd> {t('inputBar.hintShift').toLowerCase()}</p>
+      <p className="input-bar__hint">
+        {t('inputBar.hintEnter')} · {t('inputBar.hintShift')}
+      </p>
     </div>
   );
 }

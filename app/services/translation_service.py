@@ -68,7 +68,65 @@ EN_TO_MR_LABEL_MAP.update(
     }
 )
 
+EN_TO_HI_LABEL_MAP: dict[str, str] = {
+    "Track Ride": "राइड ट्रैक करें",
+    "Driver Issue": "ड्राइवर समस्या",
+    "Payment Issue": "भुगतान समस्या",
+    "Cancel Ride": "राइड रद्द करें",
+    "Refund Request": "रिफंड अनुरोध",
+    "Safety Concern": "सुरक्षा चिंता",
+    "Talk to Support": "सपोर्ट से बात करें",
+    "Driver Not Arrived": "ड्राइवर नहीं आया",
+    "Driver is Late": "ड्राइवर देर से है",
+    "Cannot Contact Driver": "ड्राइवर से संपर्क नहीं हो रहा",
+    "Contact Driver": "ड्राइवर से संपर्क करें",
+    "Cancel Ride for Free": "राइड बिना शुल्क रद्द करें",
+    "Call Support Now": "कस्टमर सपोर्ट को कॉल करें",
+    "Report Issue": "समस्या दर्ज करें",
+    "Update Pickup Pin": "पिकअप पिन अपडेट करें",
+    "Ask Driver to Start": "ड्राइवर से राइड शुरू करने को कहें",
+    "Cancel My Current Ride": "मेरी वर्तमान राइड रद्द करें",
+    "Driver Cancelled on Me": "ड्राइवर ने मेरी राइड रद्द की",
+    "Cancellation Fee Issue": "रद्दीकरण शुल्क समस्या",
+    "Dispute the Fee": "शुल्क पर आपत्ति दर्ज करें",
+    "Payment Failed": "भुगतान विफल",
+    "I Was Charged Twice": "मुझसे दो बार शुल्क लिया गया",
+    "Wrong Fare Charged": "गलत किराया वसूला गया",
+    "Change Payment Method": "भुगतान तरीका बदलें",
+    "Dispute the Fare": "किराए पर आपत्ति दर्ज करें",
+    "Dispute the Charge": "शुल्क पर आपत्ति दर्ज करें",
+    "Check Refund Status": "रिफंड स्थिति देखें",
+    "Refund Not Received": "रिफंड नहीं मिला",
+    "Request a New Refund": "नया रिफंड अनुरोध करें",
+    "Escalate My Refund": "मेरा रिफंड एस्केलेट करें",
+    "Driver Misbehavior": "ड्राइवर का अनुचित व्यवहार",
+    "Rash Driving": "लापरवाही से ड्राइविंग",
+    "SOS Emergency": "SOS आपातकाल",
+    "Accident Report": "दुर्घटना रिपोर्ट",
+    "Report This Driver": "इस ड्राइवर की रिपोर्ट करें",
+    "Contact My Driver": "मेरे ड्राइवर से संपर्क करें",
+    "Report Lost Item": "खोई वस्तु रिपोर्ट करें",
+    "Login Problem": "लॉगिन समस्या",
+    "Update My Profile": "अपनी प्रोफ़ाइल अपडेट करें",
+    "Retry the Coupon": "कूपन फिर से आज़माएँ",
+    "Driver Took Long Route": "ड्राइवर ने लंबा रास्ता लिया",
+    "Dispute the Route": "रूट पर आपत्ति दर्ज करें",
+}
+
+EN_TO_HI_LABEL_MAP.update(
+    {
+        "🚕 Track Ride": "🚕 राइड ट्रैक करें",
+        "👤 Driver Issue": "👤 ड्राइवर समस्या",
+        "💳 Payment Issue": "💳 भुगतान समस्या",
+        "❌ Cancel Ride": "❌ राइड रद्द करें",
+        "💰 Refund Request": "💰 रिफंड अनुरोध",
+        "🆘 Safety Concern": "🆘 सुरक्षा चिंता",
+        "📞 Talk to Support": "📞 सपोर्ट से बात करें",
+    }
+)
+
 MR_TO_EN_LABEL_MAP: dict[str, str] = {v.lower(): k for k, v in EN_TO_MR_LABEL_MAP.items()}
+HI_TO_EN_LABEL_MAP: dict[str, str] = {v.lower(): k for k, v in EN_TO_HI_LABEL_MAP.items()}
 
 QUICK_REPLY_ICON_PREFIXES = "🚕👤💳❌💰🆘📞"
 
@@ -84,6 +142,16 @@ def _strip_quick_reply_icon(text: str) -> str:
 EN_CANONICAL_LABEL_MAP: dict[str, str] = {}
 for label in EN_TO_MR_LABEL_MAP.keys():
     EN_CANONICAL_LABEL_MAP[label.lower()] = _strip_quick_reply_icon(label)
+
+LANGUAGE_LABEL_MAPS: dict[str, dict[str, str]] = {
+    "mr": EN_TO_MR_LABEL_MAP,
+    "hi": EN_TO_HI_LABEL_MAP,
+}
+
+LANGUAGE_TO_EN_LABEL_MAPS: dict[str, dict[str, str]] = {
+    "mr": MR_TO_EN_LABEL_MAP,
+    "hi": HI_TO_EN_LABEL_MAP,
+}
 
 
 MR_INTENT_RESPONSE_MAP: dict[str, str] = {
@@ -128,20 +196,64 @@ MR_INTENT_RESPONSE_MAP: dict[str, str] = {
     "fallback": "तुमची विनंती स्पष्टपणे समजली नाही. कृपया वेगळ्या शब्दांत पुन्हा लिहा किंवा थेट सपोर्टशी संपर्क करा.",
 }
 
+HI_INTENT_RESPONSE_MAP: dict[str, str] = {
+    "greeting": "नमस्ते! 👋 अर्बन टैक्सी सपोर्ट में आपका स्वागत है। आज मैं आपकी कैसे मदद कर सकता हूँ?",
+    "goodbye": "अर्बन टैक्सी सपोर्ट से संपर्क करने के लिए धन्यवाद। आपकी यात्रा सुरक्षित रहे! 🚕",
+    "thank_you": "आपका स्वागत है! क्या मैं और किसी चीज़ में मदद कर सकता हूँ?",
+    "help_request": "मैं मदद के लिए यहाँ हूँ। आप राइड ट्रैकिंग, भुगतान, ड्राइवर समस्या, खोई वस्तु या अकाउंट सहायता के बारे में पूछ सकते हैं।",
+    "track_ride": "मैं आपकी राइड की स्थिति में मदद कर सकता हूँ। ड्राइवर को लेकर क्या समस्या है?",
+    "driver_not_arrived": "क्षमा करें, आपका ड्राइवर अभी तक नहीं पहुँचा है। कृपया ऐप में लाइव मैप देखें।",
+    "driver_late": "देरी के लिए क्षमा करें। आपका ड्राइवर रास्ते में है। कृपया लाइव मैप देखें।",
+    "cannot_contact_driver": "ऐप की राइड स्क्रीन से ड्राइवर को कॉल करके देखें। अगर जवाब नहीं मिले, तो नीचे दिया गया विकल्प चुनें।",
+    "wrong_pickup_location": "कृपया ऐप चैट के जरिए ड्राइवर से पिकअप लोकेशन कन्फर्म करें। आप पिकअप पिन भी अपडेट कर सकते हैं।",
+    "ride_not_started": "अगर ड्राइवर मौजूद है लेकिन राइड शुरू नहीं हुई है, तो ड्राइवर से ऐप में राइड शुरू करने को कहें।",
+    "cancel_ride": "मैं राइड रद्द करने में मदद कर सकता हूँ। स्थिति क्या है?",
+    "cancel_ride_now": "आपका राइड कैंसलेशन अनुरोध भेज दिया गया है। लागू शुल्क ट्रिप हिस्ट्री में दिखेगा।",
+    "cancel_ride_free": "ड्राइवर समय पर नहीं पहुँचा, इसलिए आप बिना शुल्क रद्द करने के पात्र हैं। आपकी राइड बिना किसी शुल्क के रद्द कर दी गई है।",
+    "cancel_by_driver": "क्षमा करें, ड्राइवर ने आपकी राइड रद्द कर दी। कुछ मिनटों में नया ड्राइवर असाइन कर दिया जाएगा।",
+    "cancellation_fee_issue": "यदि रद्दीकरण शुल्क गलत लगा है, तो हमारी टीम 24 घंटों में इसकी जांच करेगी।",
+    "dispute_fee": "आपकी रद्दीकरण शुल्क आपत्ति दर्ज कर ली गई है। जांच के बाद पात्र होने पर रिफंड किया जाएगा।",
+    "payment_issue": "मैं भुगतान समस्या में मदद कर सकता हूँ। आपको किस प्रकार की भुगतान समस्या है?",
+    "payment_failed": "भुगतान विफल होने का कारण कार्ड या बैलेंस की समस्या हो सकता है। कृपया भुगतान तरीका अपडेट करके फिर कोशिश करें।",
+    "double_payment": "आपसे दो बार शुल्क लिए जाने के लिए क्षमा करें। इसकी तुरंत जांच होगी और डुप्लिकेट राशि वापस की जाएगी।",
+    "wrong_fare_charged": "अगर आपसे गलत किराया वसूला गया है, तो हम इसकी जांच करेंगे। आगे आप क्या करना चाहेंगे?",
+    "dispute_fare": "आपकी किराया आपत्ति सफलतापूर्वक दर्ज कर ली गई है। पात्र होने पर अंतर की राशि वापस की जाएगी।",
+    "refund_request": "मैं रिफंड के मामले में मदद कर सकता हूँ। आपको क्या जानना है?",
+    "refund_status": "रिफंड आमतौर पर 5-7 कार्यदिवस में खाते में दिखता है। 7 दिन से ज़्यादा होने पर एस्केलेट करें।",
+    "refund_not_received": "7 दिन बाद भी रिफंड न मिले तो हम इसे एस्केलेट करेंगे।",
+    "refund_initiated": "आपका रिफंड अनुरोध सफलतापूर्वक शुरू हो गया है। राशि 5-7 कार्यदिवस में जमा हो जाएगी।",
+    "escalate_refund": "आपका रिफंड प्रायोरिटी टीम को एस्केलेट कर दिया गया है। वरिष्ठ एजेंट 4 घंटे में जांच करेगा।",
+    "safety_issue": "आपकी सुरक्षा हमारे लिए सबसे महत्वपूर्ण है। कृपया समस्या विस्तार से बताएं।",
+    "driver_misbehavior": "ड्राइवर का अनुचित व्यवहार गंभीर है। आपकी शिकायत गोपनीय रहेगी और 24 घंटों में कार्रवाई की जाएगी।",
+    "rash_driving": "लापरवाही से ड्राइविंग एक गंभीर उल्लंघन है। ज़रूरत हो तो आप सुरक्षित जगह पर राइड रोक सकते हैं।",
+    "accident_report": "कृपया पहले अपनी सुरक्षा सुनिश्चित करें। अगर कोई घायल है, तो तुरंत 112 पर कॉल करें।",
+    "emergency_sos": "🚨 आपात स्थिति पहचान ली गई है। कृपया सक्रिय राइड स्क्रीन में SOS बटन तुरंत इस्तेमाल करें।",
+    "report_driver": "आपकी ड्राइवर शिकायत गोपनीय रूप से दर्ज कर ली गई है। 24 घंटों में कार्रवाई की जाएगी।",
+    "lost_item": "खोई वस्तु वापस पाने के लिए My Rides में संबंधित ट्रिप खोलकर Find Lost Item का इस्तेमाल करें।",
+    "contact_support": "हम आपको सपोर्ट टीम से जोड़ रहे हैं। कृपया नीचे दिए गए बटन से सीधे कॉल करें।",
+    "login_problem": "लॉगिन स्क्रीन पर Forgot Password का उपयोग करके रीसेट करें। समस्या बनी रहे तो सपोर्ट से संपर्क करें।",
+    "update_profile": "Profile → Edit Profile में जाकर आप नाम, ईमेल, फोन और फोटो अपडेट कर सकते हैं।",
+    "route_issue": "मैं रूट से जुड़ी समस्या में मदद कर सकता हूँ। क्या हुआ, बताइए।",
+    "long_route_taken": "अगर ड्राइवर ने जरूरत से लंबा रास्ता लिया है, तो आप किराए पर आपत्ति दर्ज कर सकते हैं। हम GPS डेटा जांचेंगे।",
+    "unknown_intent": "मैं आपका अनुरोध स्पष्ट रूप से समझ नहीं पाया। कृपया फिर से लिखें या सीधे सपोर्ट से संपर्क करें।",
+    "fallback": "मैं आपका अनुरोध स्पष्ट रूप से समझ नहीं पाया। कृपया फिर से लिखें या सीधे सपोर्ट से संपर्क करें।",
+}
+
 
 def normalize_user_message(text: str) -> str:
-    """Convert known Marathi/UI labels into canonical English labels for intent routing."""
+    """Convert known localized UI labels into canonical English labels for intent routing."""
     if not text:
         return text
     normalized = text.strip()
     normalized_lower = normalized.lower()
 
-    # 1) Marathi/UI label to English canonical label.
-    mapped_mr = MR_TO_EN_LABEL_MAP.get(normalized_lower)
-    if mapped_mr:
-        canonical = _strip_quick_reply_icon(mapped_mr)
-        logger.info(f"[NORM] {text!r} -> {canonical!r}")
-        return canonical
+    # 1) Localized UI label to English canonical label.
+    for language_map in LANGUAGE_TO_EN_LABEL_MAPS.values():
+        mapped_label = language_map.get(normalized_lower)
+        if mapped_label:
+                        canonical = _strip_quick_reply_icon(mapped_label)
+                        logger.info(f"[NORM] {text!r} -> {canonical!r}")
+                        return canonical
 
     # 2) English label (icon or non-icon) to English canonical label.
     mapped_en = EN_CANONICAL_LABEL_MAP.get(normalized_lower)
@@ -152,11 +264,12 @@ def normalize_user_message(text: str) -> str:
     # 3) Retry after removing icon prefix from incoming text.
     stripped = _strip_quick_reply_icon(normalized)
     stripped_lower = stripped.lower()
-    mapped_mr_stripped = MR_TO_EN_LABEL_MAP.get(stripped_lower)
-    if mapped_mr_stripped:
-        canonical = _strip_quick_reply_icon(mapped_mr_stripped)
-        logger.info(f"[NORM] {text!r} -> {canonical!r}")
-        return canonical
+    for language_map in LANGUAGE_TO_EN_LABEL_MAPS.values():
+        mapped_label = language_map.get(stripped_lower)
+        if mapped_label:
+            canonical = _strip_quick_reply_icon(mapped_label)
+            logger.info(f"[NORM] {text!r} -> {canonical!r}")
+            return canonical
 
     mapped_en_stripped = EN_CANONICAL_LABEL_MAP.get(stripped_lower)
     if mapped_en_stripped:
@@ -169,20 +282,27 @@ def normalize_user_message(text: str) -> str:
 
 def localize_intent_response(intent: str, english_response: str, target_language: str) -> str:
     """Return intent-aware localized response text."""
-    if target_language == "mr":
-        return MR_INTENT_RESPONSE_MAP.get(intent, "तुमच्या विनंतीवर प्रक्रिया केली आहे. कृपया पुढचा पर्याय निवडा.")
+    language_map = {
+        "mr": MR_INTENT_RESPONSE_MAP,
+        "hi": HI_INTENT_RESPONSE_MAP,
+    }.get(target_language)
+    if language_map is not None:
+        return language_map.get(intent, english_response)
     return english_response
 
 
 def translate_sub_options(options: list[str], target_language: str) -> list[str]:
     """Translate sub-option labels to requested language."""
-    if target_language != "mr":
+    language_map = LANGUAGE_LABEL_MAPS.get(target_language)
+    if language_map is None:
         return options
-    return [EN_TO_MR_LABEL_MAP.get(opt, opt) for opt in options]
+    return [language_map.get(opt, opt) for opt in options]
 
 
 def translate_response(response_text: str, target_language: str) -> str:
     """Backward-compatible wrapper used by older imports."""
     if target_language == "mr":
         return MR_INTENT_RESPONSE_MAP.get("fallback", response_text)
+    if target_language == "hi":
+        return HI_INTENT_RESPONSE_MAP.get("fallback", response_text)
     return response_text

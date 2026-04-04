@@ -4,6 +4,7 @@ import { MessageBubble } from './MessageBubble';
 import { TypingIndicator } from './TypingIndicator';
 import { QuickReplies } from './QuickReplies';
 import './ChatWindow.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ChatWindowProps {
   messages: Message[];
@@ -17,6 +18,7 @@ interface ChatWindowProps {
 
 export function ChatWindow({ messages, isLoading, showQuickReplies, onQuickReply, onSubOptionClick, onCallClick, onResolved }: ChatWindowProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,7 +28,7 @@ export function ChatWindow({ messages, isLoading, showQuickReplies, onQuickReply
     <div className="chat-window">
       {/* Date separator */}
       <div className="chat-window__date">
-        <span>Today</span>
+        <span>{t('chatWindow.today')}</span>
       </div>
 
       {/* Render messages */}
